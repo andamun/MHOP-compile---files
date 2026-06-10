@@ -1,0 +1,15 @@
+total = 0
+# Loop through each subdirectory
+for d in */ ; do
+    # Count 'qn' files in this specific directory
+    count=$(find "$d" -maxdepth 1 -type f -name "qn*" | wc -l)
+    count_md=$(find "$d" -maxdepth 1 -type f -name "md*" | wc -l)
+    # Print the folder name and its count
+    echo "$d : qn - $count md - $count_md"
+    
+    # Add to the running total
+    total=$((total + count))
+done
+
+echo "----------------"
+echo "TOTAL SUM (qn) : $total"

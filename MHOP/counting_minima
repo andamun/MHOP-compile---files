@@ -1,0 +1,16 @@
+total = 0
+# Loop through each subdirectory
+for d in */ ; do
+    # Count 'qn' files in this specific directory
+    count=$(grep cepted "$d/hop.log" | wc -l)
+    #count=$(find "$d" -maxdepth 1 -name "qn*" | wc -l)
+    
+    # Print the folder name and its count
+    echo "$d : $count"
+    
+    # Add to the running total
+    total=$((total + count))
+done
+
+echo "----------------"
+echo "TOTAL SUM : $total"
